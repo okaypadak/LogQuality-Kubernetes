@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logquality-server
+spec:
+  selector:
+    matchLabels:
+      app: logquality-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: logquality-server
+    spec:
+      containers:
+        - name: logquality-server
+          image: localhost:5000/logquality-server
+          ports:
+            - containerPort: 80

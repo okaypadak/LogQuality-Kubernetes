@@ -1,17 +1,4 @@
 apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: elasticsearch-storage
-spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 10Gi
-
----
-
-apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: elasticsearch-pv
@@ -22,6 +9,19 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: /mnt/data/elasticsearch
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: elasticsearch-storage
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 10Gi
 
 ---
 
